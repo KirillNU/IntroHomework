@@ -3,7 +3,7 @@ import json
 from flask import Flask
 
 
-def get_valutes_list():
+def get_currencies_list():
     url = 'https://www.cbr-xml-daily.ru/daily_json.js'
     response = requests.get(url)
     data = json.loads(response.text)
@@ -33,7 +33,7 @@ def create_html(valutes):
 
 @app.route("/")
 def index():
-    valutes = get_valutes_list()
+    valutes = get_currencies_list()
     html = create_html(valutes)
     return html
 
